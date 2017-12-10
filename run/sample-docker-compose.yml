@@ -1,4 +1,4 @@
 gats-monitor:
-  image: mini.jadzia.biz:5000/gats-monitor:latest
+  image: gatsiva/gats-monitor:latest
   volumes:
     - /data/monitor:/etc/gats-monitor

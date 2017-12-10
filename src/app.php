@@ -38,6 +38,7 @@ $log_debug = $global_config['log_debug'];
 $email_always = $global_config['email_always'];
 $email_on_errors = $global_config['email_on_errors'];
 $api_service_url = $global_config['api_service_url'];
+$api_service_key = $global_config['api_service_key'];
 $symbols_to_watch = $global_config['symbols'];
 $sleep_mins = $global_config['sleep_mins'];
 
@@ -273,6 +274,8 @@ function callIndicatorTransaction($symbol, $indicators) {
  */
 function callHttpGetRequest($url) {
 
+	global $global_config;
+
 	try {
 		$client = new HttpClient();
 		$response = $client->get(
@@ -280,7 +283,7 @@ function callHttpGetRequest($url) {
 			[
 					'http_errors'=>false,
 					'verify'=>true,
-					'headers'=>['Accept' => 'application/json']
+					'headers'=>['Accept' => 'application/json', 'Authorization' => 'Bearer ' . $global_config['api_service_key']]
 				]
 		);
 
@@ -299,6 +302,9 @@ function callHttpGetRequest($url) {
  * Calls an HTTP post request
  */
 function callHttpPostRequest($url, $json_data) {
+
+	global $global_config;
+
 	try {
 		$client = new HttpClient();
 		$response = $client->post(
@@ -306,7 +312,7 @@ function callHttpPostRequest($url, $json_data) {
 			[
 				'http_errors'=>false,
 				'verify'=>true,
-				'headers'=>['Accept' => 'application/json'],
+				'headers'=>['Accept' => 'application/json', 'Authorization' => 'Bearer ' . $global_config['api_service_key']],
 				'json'=>$json_data
 			]
 		);

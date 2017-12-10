@@ -5,4 +5,4 @@
 # periodically ( to do so, make sure that the 'run_once' field of your config file is set
 # to true) - or you can run it as a standalone process.
 
-docker run --rm --name gats-monitor -v /data/monitor:/etc/gats-monitor mini.jadzia.biz:5000/gats-monitor:latest
+docker run --rm --name gats-monitor -v /data/monitor:/etc/gats-monitor gatsiva/gats-monitor:latest

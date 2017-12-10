@@ -5,7 +5,7 @@
   "email_always" : false,
   "email_on_errors" : true,
   "log_debug" : true,
-  "api_service_url" : "https://path.to.api.service/api/v1",
+  "api_service_url" : "https://api.gatsiva.com/api/v1",
   "api_service_key" : "<insert your key here>",
   "email": {
     "to_name": "To person",

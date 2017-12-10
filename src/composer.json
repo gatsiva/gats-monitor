@@ -2,10 +2,10 @@
 	"name": "gatsiva/gats-command-line-monitor",
 	"description": "A command line monitoring tool that utilizes the GATS Public API",
 	"keywords": ["gatsiva", "cryptocurrency"],
-	"version":"0.3",
+	"version":"1.0",
 	"require": {
-		"guzzlehttp/guzzle":"6.*",
-		"monolog/monolog":"1.*",
-		"phpmailer/phpmailer": "5.*"
+		"guzzlehttp/guzzle":"~6.0",
+		"monolog/monolog":"~1.0",
+		"phpmailer/phpmailer": "~5.2"
 	}
 }

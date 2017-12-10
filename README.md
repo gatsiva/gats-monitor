@@ -4,11 +4,11 @@ This repository contains the project files and instructions for a monitoring too
 
 Monitoring occurs by simply looking for a set of trigger conditions to be true, and if any one of them is true, the system will send an email with additional information (indicators). Both trigger conditions and indicators are completely configurable and are defined using the [Gatsiva Language][language]
 
+API access is **currently limited to beta testers and collaborators** and utilizing this API will require the use of a valid API key. For more information on how to utilize the Gatsiva API or to request access, please visit the [Gatsiva Website](https://gatsiva.com).
+
 ## How to Install / Use
 
 This application can be run either via directly in PHP or as a prepackaged Docker image.
-
-At present this respository is protected to validated contributors so you will not be able to download the code or the images unless you have access to the Gatsiva gitlab project group.
 
 If you are interested in learning more or contributing, please sign up to our [Gatsiva Community](https://discourse.gatsiva.com).
 
@@ -16,17 +16,11 @@ If you are interested in learning more or contributing, please sign up to our [G
 
 Running this application with [Docker](https://docker.com) is by far the easiest way to run this system.
 
-First, make sure you login to our Docker image repository hosted on Gitlab.
+Simply download and run the image, replacing `/path/to/your/config.json` with the path to your configuration file.
 
 ```
-docker login registry.gitlab.com
-```
-
-Then download and run the image, replacing `/path/to/your/config.json` with the path to your configuration file.
-
-```
-docker pull registry.gitlab.com/gatsiva/gats-command-line-monitor:latest
-docker run --rm -v /path/to/your/config.json:/var/gatsiva/cli-config.json registry.gitlab.com/gatsiva/gats-command-line-monitor:tag
+docker pull gatsiva/gats-monitor:latest
+docker run --rm -v /path/to/your/config.json:/var/gatsiva/cli-config.json gatsiva/gats-monitor:latest
 ```
 
 ### Running via PHP
@@ -40,9 +34,9 @@ In the examples below, be sure to replace `/path/to/your/config.json` with your 
 If you have Docker installed on your system, you can avoid installing Composer to download the PHP library dependencies.
 
 ```
-git clone git@gitlab.com:gatsiva/gats-command-line-monitor.git
-docker run --rm $(pwd)/gats-command-line-monitor/src:/app composer/composer install
-php gats-command-line-monitor/src/app.php /path/to/your/config.json
+git clone git@github.com:gatsiva/gats-monitor.git
+docker run --rm -v $(pwd)/gats-monitor/src:/app composer/composer install
+php gats-monitor/src/app.php /path/to/your/config.json
 ```
 
 **With Git, Composer, and PHP installed on your system**
@@ -50,8 +44,8 @@ php gats-command-line-monitor/src/app.php /path/to/your/config.json
 If you have Composer already installed on your system, you can do it the old fashioned way
 
 ```
-git clone git@gitlab.com:gatsiva/gats-command-line-monitor.git
-cd gats-command-line-monitor/src
+git clone git@github.com:gatsiva/gats-monitor.git
+cd gats-monitor/src
 composer install
 php app.php /path/to/your/config.json
 ```
@@ -84,7 +78,7 @@ A sample configuration file is located in this repository at `config/sample-conf
   "email_always" : false,
   "email_on_errors" : true,
   "log_debug" : true,
-  "api_service_url" : "https://path.to.api.service/api/v1",
+  "api_service_url" : "https://api.gatsiva.com/api/v1",
   "api_service_key" : "<insert your key here>",
   "email": {
     "to_name": "To person",
