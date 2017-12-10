@@ -1,0 +1,50 @@
+{
+  "run_once": false,
+  "sleep_mins": 60,
+  "log_type": "console",
+  "email_always" : false,
+  "email_on_errors" : true,
+  "log_debug" : true,
+  "api_service_url" : "https://path.to.api.service/api/v1",
+  "api_service_key" : "<insert your key here>",
+  "email": {
+    "to_name": "To person",
+    "to_address": "address@server.com",
+    "from_name": "Gatsiva Monitor",
+    "from_address": "from@server.com",
+    "from_smtp_host": "smtp.server.com",
+    "from_smtp_port": "587",
+    "from_smtp_type": "tls",
+    "from_smtp_username": "from@server.com",
+    "from_smtp_password": "password"
+  },
+  "symbols": {
+    "BTC:USD:daily": {
+      "triggers": [
+        "sma(14) crosses over sma(28)",
+        "bollinger range(14,2) < 0.1",
+        "bollinger range(14,2) > 0.9"
+      ],
+      "indicators": [
+        "close(1)",
+        "price change percentage(1)",
+        "price change percentage(7)",
+        "bollinger range(14,2)",
+        "sma(14)",
+        "sma(28)"
+      ]
+    },
+    "ETH:USD:daily": {
+      "triggers": [
+        "price change percentage(1) > 0.05",
+        "bollinger range(24,2) < 0.1",
+        "bollinger range(24,2) > 0.9"
+      ],
+      "indicators": [
+        "close(1)",
+        "price change percentage(1)",
+        "price change percentage(24)"
+      ]
+    }
+  }
+}
